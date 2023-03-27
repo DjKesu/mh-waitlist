@@ -79,6 +79,12 @@ function App() {
               >
                 Memory Haven
               </h1>
+              <h2 style={{color: "white",
+                  fontFamily: "EB Garamond",
+                  fontSize: 30,}}>
+                Thank you for joining the waitlist!
+                See you soon
+              </h2>
             </div>
           )}
         </div>
