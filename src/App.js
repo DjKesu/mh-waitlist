@@ -79,23 +79,21 @@ function App() {
               >
                 Memory Haven
               </h1>
-              <h2 style={{color: "white",
+              <h2
+                style={{
+                  color: "white",
                   fontFamily: "EB Garamond",
-                  fontSize: 30,}}>
-                Thank you for joining the waitlist!
-                See you soon
+                  fontSize: 30,
+                }}
+              >
+                Thank you for joining the waitlist! See you soon
               </h2>
             </div>
           )}
         </div>
       ) : (
         <div className="video-container">
-          <h1
-            className="title"
-            style={{ color: "white", fontFamily: "EB Garamond", fontSize: 70 }}
-          >
-            Every second is a memory worth keeping
-          </h1>
+          <h1 className="title">Every second is a memory worth keeping</h1>
           <video src={intro} type="video/mp4" autoPlay={true} muted={true} />
         </div>
       )}
