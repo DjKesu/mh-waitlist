@@ -12,6 +12,7 @@
 
 .fade-out {
   background-color: black;
+  transition: opacity 300ms ease-in-out;
 }
 
 .video-container {
@@ -84,6 +85,7 @@
 @keyframes fade-in {
   to {
     opacity: 1;
+    transition: 500ms ease-in-out;
   }
 }
 
@@ -95,25 +97,55 @@
 
 .input-container {
   display: flex;
+  flex-wrap: row;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-input[type="email"] {
+input {
+  width: 100%;
+  max-width: 240px;
   padding: 10px;
+  /* margin-right: 10px; */
   border: none;
   border-radius: 5px 0 0 5px;
-  width: 300px;
   font-size: 16px;
-  font-family: "EB Garamond", serif;
+  background-color: #f5f5f5;
+  color: #333;
+  outline: none;
+  letter-spacing: 1px;
 }
 
 button.join-button {
   padding: 10px 20px;
+  background-color: grey;
+  color: #fff;
   border: none;
   border-radius: 0 5px 5px 0;
-  background-color: grey;
-  color: white;
   font-size: 16px;
-  font-family: "EB Garamond", serif;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  letter-spacing: 1px;
+}
+
+button.join-button:hover {
+  background-color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .input-container {
+    flex-direction: column;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  input {
+    border-radius: 5px;
+  }
+  button.join-button{
+    margin-top: 10px;
+    border-radius: 5px;
+  }
 }

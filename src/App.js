@@ -6,7 +6,7 @@ import { createRecord } from "./backend/airtable.js";
 
 function App() {
   const [showLogo, setShowLogo] = useState(false);
-  const [fade, setFade] = useState(false);
+  const [fade, setFade] = useState(true);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(true);
 
@@ -28,7 +28,6 @@ function App() {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    // console.log(email);
   };
 
   function handleSubmit(event) {
@@ -54,14 +53,14 @@ function App() {
               <div className="input-container">
                 <input
                   type="email"
-                  placeholder="Join the waitlist"
+                  placeholder="Join the waitlist!"
                   value={email}
                   onChange={handleEmailChange}
+                  className="email-input"
                 />
                 <button
                   type="submit"
                   className="join-button"
-                  style={{ fontFamily: "Montserrat" }}
                 >
                   Join
                 </button>
@@ -69,24 +68,14 @@ function App() {
             </form>
           ) : (
             <div>
-              <h1
-                className="title"
-                style={{
-                  color: "white",
-                  fontFamily: "EB Garamond",
-                  fontSize: 70,
-                }}
-              >
-                Memory Haven
-              </h1>
               <h2
                 style={{
                   color: "white",
-                  fontFamily: "EB Garamond",
-                  fontSize: 30,
+                  fontFamily: "Swiss 721 Thin" ,
+                  fontSize: 20,
                 }}
               >
-                Thank you for joining the waitlist! See you soon
+                Thank you for joining the waitlist!
               </h2>
             </div>
           )}
