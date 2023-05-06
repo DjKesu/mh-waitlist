@@ -45,8 +45,9 @@
     top: 0;
     left: 0;
   }
-
-  .title {
+  .video-container .title{
+    position: absolute;
+    margin-top: 10em;
     font-size: small;
   }
 }

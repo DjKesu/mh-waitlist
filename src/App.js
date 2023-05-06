@@ -6,7 +6,7 @@ import { createRecord } from "./backend/airtable.js";
 
 function App() {
   const [showLogo, setShowLogo] = useState(false);
-  const [fade, setFade] = useState(true);
+  const [fade, setFade] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(true);
 
