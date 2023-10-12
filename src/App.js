@@ -1,30 +1,18 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import intro from "./videos/memhav.mp4";
-import logo from "./images/icon3.svg";
 import { createRecord } from "./backend/airtable.js";
+import AutoplayVideo from "./components/AutoPlay";
+import Logo from "./components/Logo";
+import { Button } from "react-bootstrap";
+import SwipeDownAltRoundedIcon from "@mui/icons-material/SwipeDownAltRounded";
+import FeatureComponent from "./components/FeatureComponent";
+import memhaven from "./images/memhavmain.png";
 
 function App() {
-  const [showLogo, setShowLogo] = useState(false);
-  const [fade, setFade] = useState(false);
+  const [showExplore, setShowExplore] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(true);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setFade(true);
-    }, 10000);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  useEffect(() => {
-    if (fade) {
-      setTimeout(() => {
-        setShowLogo(true);
-      }, 1000);
-    }
-  }, [fade]);
+  const [videoCompleted, setVideoCompleted] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -33,7 +21,6 @@ function App() {
   function handleSubmit(event) {
     event.preventDefault();
     setEmail(event.target.value);
-    // console.log(email);
     createRecord(email)
       .then(() => {
         setSubmitted(false);
@@ -43,47 +30,64 @@ function App() {
       });
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowExplore(true);
+    }, 5000);
+  }, []);
+
   return (
-    <div className={`App ${fade ? "fade-out" : ""}`}>
-      {showLogo ? (
+    <div className="App">
+      <div className="video-container">
+        <AutoplayVideo onEnded={() => setVideoCompleted(true)} />
+      </div>
+      <div className="content-container">
         <div className="logo-container">
-          <img src={logo} alt="logo" className="logo" />
-          {submitted ? (
-            <form onSubmit={handleSubmit}>
-              <div className="input-container">
-                <input
-                  type="email"
-                  placeholder="Join the waitlist!"
-                  value={email}
-                  onChange={handleEmailChange}
-                  className="email-input"
-                />
-                <button
-                  type="submit"
-                  className="join-button"
-                >
-                  Join
-                </button>
-              </div>
-            </form>
-          ) : (
-            <div>
-              <h2
-                style={{
-                  color: "white",
-                  fontFamily: "Swiss 721 Thin" ,
-                  fontSize: 20,
-                }}
-              >
-                Thank you for joining the waitlist!
-              </h2>
-            </div>
-          )}
+          <Logo />
         </div>
-      ) : (
-        <div className="video-container">
-          <h1 className="title">Every second is a memory worth keeping</h1>
-          <video src={intro} type="video/mp4" autoPlay={true} muted={true} />
+        <h1 className="title">MEMORY HAVEN</h1>
+        {showExplore ? (
+          <div className="explore-container">
+            <Button
+              className="btn explore"
+              onClick={() => console.log("clicked")}
+            >
+              Explore
+            </Button>
+          </div>
+        ) : null}
+        <SwipeDownAltRoundedIcon className="swipe-icon" />
+      </div>
+      {showExplore && (
+        <div className="features">
+          <div className="feature-container">
+            <FeatureComponent
+              imageSrc={memhaven}
+              title="Feature Title"
+              caption="Feature Caption goes here."
+            />
+          </div>
+          <div className="feature-container">
+            <FeatureComponent
+              imageSrc={memhaven}
+              title="Feature Title"
+              caption="Feature Caption goes here."
+            />
+          </div>
+          <div className="feature-container">
+            <FeatureComponent
+              imageSrc={memhaven}
+              title="Feature Title"
+              caption="Feature Caption goes here."
+            />
+          </div>
+          <div className="feature-container">
+            <FeatureComponent
+              imageSrc={memhaven}
+              title="Feature Title"
+              caption="Feature Caption goes here."
+            />
+          </div>
         </div>
       )}
     </div>
