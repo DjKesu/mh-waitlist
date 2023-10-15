@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/AutoPlayVideo.css';
 import intro from "../videos/memhav.mp4";
+import { Navbar } from 'react-bootstrap';
+import logo from '../images/icon3.svg';
 
 const AutoplayVideo = () => {
   const [showVideo, setShowVideo] = useState(true);
@@ -17,17 +19,22 @@ const AutoplayVideo = () => {
     return () => {
       clearTimeout(timeout);
     };
-  } , []);
+  }, []);
 
   return (
-    <div className="fadeinout">
-      {showVideo && (
-        <div className="video-container">
-        {/* <h1 className="title">Every second is a memory worth keeping</h1> */}
-        <video src={intro} type="video/mp4" autoPlay={true} muted={true} onEnded={handleVideoEnd} />
+    showVideo ? (
+      <div className="video-container">
+        <video
+          className="video"
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleVideoEnd}
+        >
+          <source src={intro} type="video/mp4" />
+        </video>
       </div>
-      )}
-    </div>
+    ) : null
   );
 };
 

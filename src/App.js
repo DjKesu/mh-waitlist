@@ -1,33 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import { createRecord } from "./backend/airtable.js";
 import AutoplayVideo from "./components/AutoPlay";
 import Logo from "./components/Logo";
 import { Button } from "react-bootstrap";
 import SwipeDownAltRoundedIcon from "@mui/icons-material/SwipeDownAltRounded";
 import FeatureComponent from "./components/FeatureComponent";
 import memhaven from "./images/memhavmain.png";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [showExplore, setShowExplore] = useState(false);
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(true);
-  const [videoCompleted, setVideoCompleted] = useState(false);
+  const featureRef = useRef(null);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setEmail(event.target.value);
-    createRecord(email)
-      .then(() => {
-        setSubmitted(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  function handleExploreClick() {
+    window.scrollTo(0, featureRef.current.offsetTop - 50);
   }
 
   useEffect(() => {
@@ -38,29 +24,27 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <div className="video-container">
-        <AutoplayVideo onEnded={() => setVideoCompleted(true)} />
+        <AutoplayVideo />
       </div>
       <div className="content-container">
-        <div className="logo-container">
+        {/* <div className="logo-container">
           <Logo />
         </div>
-        <h1 className="title">MEMORY HAVEN</h1>
+        <h1 className="title">MEMORY HAVEN</h1> */}
+        <SwipeDownAltRoundedIcon className="swipe-icon" />
         {showExplore ? (
           <div className="explore-container">
-            <Button
-              className="btn explore"
-              onClick={() => console.log("clicked")}
-            >
+            <Button className="btn explore" onClick={handleExploreClick}>
               Explore
             </Button>
           </div>
         ) : null}
-        <SwipeDownAltRoundedIcon className="swipe-icon" />
       </div>
       {showExplore && (
         <div className="features">
-          <div className="feature-container">
+          <div className="feature-container" ref={featureRef}>
             <FeatureComponent
               imageSrc={memhaven}
               title="Feature Title"

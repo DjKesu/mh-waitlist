@@ -1,33 +1,12 @@
-.fadeinout {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  animation: fadeinout 6s;
-  opacity: 0; /* Start with opacity at 0 */
-}
-
-@keyframes fadeinout {
-  0% {
-    opacity: 0; /* Start with opacity at 0 */
-  }
-  50% {
-    opacity: 1; /* Middle of the animation, opacity at 1 (fully visible) */
-  }
-  100% {
-    opacity: 0; /* End of the animation, opacity back to 0 */
-  }
-}
-
 .video-container {
+  background: url("../images/roof.svg");
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
-  animation: fadeout 6s 3s forwards; /* Add fade-out animation with a delay of 3s to match the fadeinout animation duration */
+  animation: fadeout 3s forwards;
 }
 
 .video-container video {
@@ -53,7 +32,7 @@
     left: 0;
     opacity: 1; /* Start with full opacity */
   }
-  .video-container .title{
+  .video-container .title {
     position: absolute;
     margin-top: 10em;
     font-size: small;
@@ -61,24 +40,43 @@
   }
 }
 
-.title {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  color: white;
-  z-index: 1;
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 2em;
+  color: #333;
   text-align: center;
-  width: 100%;
-  opacity: 1; /* Start with full opacity */
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  z-index: 2;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  .title {
+    font-size: 1em;
+    margin-top: 0.5em;
+    opacity: 0;
+    z-index: 2;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    font-family: "Libre Baskerville", serif;
+    outline: none;
+    letter-spacing: 1px;
+    color: white;
+    animation-fill-mode: forwards;
+  }
 }
 
 @keyframes fadeout {
   0% {
-    opacity: 1; /* Start with full opacity */
+    opacity: 0.5;
   }
   100% {
-    opacity: 0; /* End with opacity at 0 */
+    opacity: 1;
   }
 }

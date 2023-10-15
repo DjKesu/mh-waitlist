@@ -6,8 +6,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, #e9a2d3, #779ef1);
-  opacity: 1;
+  background-color: url("./images/roof.svg");
+  background-size: cover;
   transition: background-color opacity 1s ease-in;
   font-family: "Libre Baskerville", serif;
 }
@@ -77,7 +77,7 @@ input {
   border: 2px solid #fff;
   border-radius: 50px;
   color: #fff;
-  background-color: transparent;
+  background-color: black;
   font-family: 'Libre Baskerville', serif;
   z-index: 2;
   animation-name: fade-in;
@@ -95,7 +95,8 @@ input {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-delay: 1s;
-  margin-bottom: 20px;
+  bottom: 0;
+  position: absolute;
 }
 
 @keyframes fade-in {
@@ -158,8 +159,9 @@ button.join-button {
   flex-direction: column;
   position: relative;
   align-items: center;
-  margin-top: 100%; /* Adjust margin as needed */
-  padding: auto; /* Adjust padding as needed */
+  margin-top: 100%; 
+  padding: auto; 
+  color: white;
 }
 
 .explore-container {
@@ -179,8 +181,11 @@ button.join-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh; /* Adjust margin as needed */
+  /* margin-top: 10vh; Adjust margin as needed */
   background-color: aqua;
   width: 100%;
   height: auto;
+}
+.content-container .feature {
+  margin-bottom: 20px; /* Adjust spacing as needed */
 }
