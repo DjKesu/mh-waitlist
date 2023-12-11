@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import intro from "./videos/memhav.mp4";
 import logo from "./images/icon3.svg";
 import { createRecord } from "./backend/airtable.js";
 
