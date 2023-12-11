@@ -58,10 +58,7 @@ function App() {
                   onChange={handleEmailChange}
                   className="email-input"
                 />
-                <button
-                  type="submit"
-                  className="join-button"
-                >
+                <button type="submit" className="join-button">
                   Join
                 </button>
               </div>
@@ -70,8 +67,6 @@ function App() {
             <div>
               <h2
                 style={{
-                  color: "white",
-                  fontFamily: "Swiss 721 Thin" ,
                   fontSize: 20,
                 }}
               >
@@ -82,8 +77,14 @@ function App() {
         </div>
       ) : (
         <div className="video-container">
-          <h1 className="title">Every second is a memory worth keeping</h1>
-          <video src={intro} type="video/mp4" autoPlay={true} muted={true} />
+          <h1 className="title">Be Remembered.</h1>
+          <video
+            src="https://mh-waitlist.s3.us-east-1.amazonaws.com/memhav.mp4"
+            type="video/mp4"
+            autoPlay={true}
+            muted={true}
+            playsInline={true}
+          />
         </div>
       )}
     </div>
